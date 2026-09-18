@@ -21,7 +21,7 @@ public class Calculator {
     // New: add two values
     public double sum(double a, double b) {
         return a + b;
-    }
+    } 
 
     // New: apply a percentage discount
     public double discount(double amount, double percent) {
@@ -35,4 +35,4 @@ public class Calculator {
     public double calculateTotal(List<Double> amounts) {
         return amounts.stream().mapToDouble(Double::doubleValue).sum();
     }
-}
+} 
