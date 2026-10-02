@@ -1,41 +1,24 @@
 package com.prueba1.model;
+import com.prueba1.Calculator;
 
 public class Article {
-    private String idArticulo;
-    private String nombre;
-    private double precio;
-    private int cantidad;
+   private String nombre;
+   private int cantidad;
+   private double precio;
+   private double descuento;
 
 
-    public Article(String idArticulo, String nombre, double precio, int cantidad) {
-        this.idArticulo = idArticulo;
+    public Article(String nombre, int cantidad, double precio, double descuento) {
         this.nombre = nombre;
-        this.precio = precio;
         this.cantidad = cantidad;
+        this.precio = precio;
+        this.descuento = descuento;
     }
-
-    public String getIdArticulo() {
-        return idArticulo;
-    }
-
-    public void setIdArticulo(String idArticulo) {
-        this.idArticulo = idArticulo;
-    }
-
     public String getNombre() {
         return nombre;
     }
-
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public double getPrecio() {
-        return precio;
-    }
-
-    public void setPrecio(double precio) {
-        this.precio = precio;
     }
     public int getCantidad() {
         return cantidad;
@@ -43,8 +26,25 @@ public class Article {
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
     }
-    public double getGrossAmount() {
-        return precio * cantidad;
+    public double getPrecio() {
+        return precio;
+    }
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
+    public double getDescuento() {
+        return descuento;
+    }
+    public void setDescuento(double descuento) {
+        this.descuento = descuento;
+    }
+    public double getGrossAmount(int cantidad,double precio) {
+        Calculator calculator = new Calculator();
+        return calculator.multiplyDouble(cantidad, precio);
+    }
+    public double getDiscountedAmount(double grossAmount,double descuento) {
+        Calculator calculator = new Calculator();
+        return calculator.discount(grossAmount, descuento);
     }
    
 }

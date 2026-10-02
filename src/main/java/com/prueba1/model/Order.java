@@ -26,5 +26,18 @@ public class Order {
     public void setArticulos(List<String> articlulos) {
         this.articlulos = articlulos;
     }
+    public double getGrossTotal(List<Double> amounts) {
+        double total = 0;
+        for (double amount : amounts) {
+            total += amount;
+        }
+        return total;
+    }
+    public double getDiscountedTotal(double grossTotal, double discount) {
+        if (discount < 0 || discount > 100) {
+            throw new IllegalArgumentException("El descuento tiene que ser del 0 al 100%");
+        }
+        return grossTotal - (grossTotal * discount / 100.0);
+    }
     
 }
