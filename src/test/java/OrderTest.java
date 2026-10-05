@@ -28,6 +28,22 @@ public class OrderTest {
         double discount = 10.0;
         assertEquals(540.0, order.getDiscountedTotal(grossTotal, discount));
     }
+    @Test 
+    void getDiscountedTotalDescuentoNoValidoTest() {
+        double grossTotal = 600.0;
+        double invalidDiscount = 150.0; // descuento invalido
+        assertThrows(IllegalArgumentException.class, () -> {
+            order.getDiscountedTotal(grossTotal, invalidDiscount);
+        });
+    }
+    @Test 
+void getDiscountedTotalValorNegativoTest() {
+        double grossTotal = 600.0;
+        double negativeDiscount = -10.0; // descuento negativo
+        assertThrows(IllegalArgumentException.class, () -> {
+            order.getDiscountedTotal(grossTotal, negativeDiscount);
+        });
+    }
 
 
 
