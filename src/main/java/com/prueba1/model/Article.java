@@ -1,13 +1,20 @@
 package com.prueba1.model;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.prueba1.Calculator;
 
 public class Article {
+
+   @JsonProperty("name")
    private String nombre;
+   @JsonProperty("quantity")
    private int cantidad;
+   @JsonProperty("unitPrice")
    private double precio;
+   @JsonProperty("discount")
    private double descuento;
 
-
+    public Article() {
+    }
     public Article(String nombre, int cantidad, double precio, double descuento) {
         this.nombre = nombre;
         this.cantidad = cantidad;
