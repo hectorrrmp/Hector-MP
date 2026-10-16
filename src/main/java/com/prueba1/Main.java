@@ -10,7 +10,12 @@ import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.prueba1.model.Article;
 import com.prueba1.model.Order;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class Main {
+    private static final Logger log = LoggerFactory.getLogger(Main.class);
+
     public static void main(String[] args) {
          
         System.out.println("Hello world!");
@@ -33,11 +38,11 @@ public class Main {
                     new TypeReference<List<Order>>() {}
             );
             for (Order order : orders) {
-                System.out.println("Loaded order: " + order.getIdPedido());
+               log.info("Loaded order: " + order.getIdPedido());
         }
         } catch (Exception e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+            log.error("Error occurred while reading orders", e);
         }
 
      
