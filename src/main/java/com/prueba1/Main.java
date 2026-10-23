@@ -8,8 +8,11 @@ import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.prueba1.controller.OrderController;
 import com.prueba1.model.Article;
 import com.prueba1.model.Order;
+import com.prueba1.view.OrderView;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -31,7 +34,7 @@ public class Main {
         InputStream inputStream =
                 Main.class.getClassLoader().getResourceAsStream("orders.json");
 
-        List<Order> orders;
+        List<Order> orders = null;
         try {
             orders = objectMapper.readValue(
                     inputStream,
@@ -44,8 +47,9 @@ public class Main {
             // TODO Auto-generated catch block
             log.error("Error occurred while reading orders", e);
         }
-
-     
+         OrderView view = new OrderView();
+            new OrderController(view, orders);
+      
     }
     
     
