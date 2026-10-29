@@ -7,6 +7,7 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 
 import com.prueba1.*;
+import com.prueba1.model.Article;
 import com.prueba1.model.Order;
 
 public class OrderTest {
@@ -14,7 +15,7 @@ public class OrderTest {
 
     @BeforeEach 
     public void setUp() {
-        List<String> articulos = List.of("Articulo1", "Articulo2");
+        List<Article> articulos = List.of(new Article("Articulo1", 0, 0, 0), new Article("Articulo2", 0, 0, 0));
         order = new Order("Pedido1", articulos);
     }
     @Test 
