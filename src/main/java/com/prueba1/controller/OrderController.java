@@ -2,6 +2,7 @@ package com.prueba1.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -20,6 +21,9 @@ import javax.swing.SwingWorker;   //lo uso para consultar la API de Frankfurter 
 
 import com.prueba1.service.ExchangeRateService;   //esta es la clase que se encarga del cambio de la moneda
 import com.prueba1.service.ExchangeRateService.ExchangeRate;     //se usa para obtener el tipo de cambio actual entre EUR y USD
+
+import java.io.File;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class OrderController {
 
@@ -46,6 +50,12 @@ public class OrderController {
             @Override
             public void actionPerformed(ActionEvent e) {
                 searchOrder();
+            }
+        });
+        view.getCreateButton().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                createOrder();
             }
         });
     }
@@ -97,5 +107,37 @@ public class OrderController {
         JOptionPane.showMessageDialog(view, "Order not found.");
     }
         //... display order if found, else display "Order not found."
-    
+
+
+    private void createOrder() {
+        String id = JOptionPane.showInputDialog(view, "Enter Order ID:" );
+
+        for (Order order : orders) {
+
+            if (order.getIdPedido().equals(id)) {
+
+                JOptionPane.showMessageDialog(view,"Order ID already exists");
+                return;
+            }
+        }
+        Order newOrder = new Order(id,new ArrayList<>());
+        orders.add(newOrder);
+
+            saveOrders();
+            view.loadOrders(orders);
+
+            JOptionPane.showMessageDialog(view,"Order created successfully");
+    }
+    private void saveOrders() {  //coge la lista de pedidos que está en memoria y la escribe en orders.json
+                                   
+    ObjectMapper mapper = new ObjectMapper();
+
+    try {
+
+        mapper.writerWithDefaultPrettyPrinter()
+                .writeValue(new File("src/main/resources/orders.json"),orders );
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+}
 }

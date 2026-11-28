@@ -48,6 +48,8 @@ public class Main {
             log.error("Error occurred while reading orders", e);
         }
          OrderView view = new OrderView();
+            view.loadOrders(orders);
+            
             new OrderController(view, orders);
       
     }

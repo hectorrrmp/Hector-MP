@@ -27,7 +27,7 @@
       { "name": "Laptop", "quantity": 3, "unitPrice": 890, "discount": 5 }
     ]
   },
-    {
+  {
     "id": "O005",
     "articles": [
       { "name": "Iphone X", "quantity": 1, "unitPrice": 500, "discount": 2 },

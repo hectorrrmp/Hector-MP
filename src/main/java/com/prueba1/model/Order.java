@@ -10,27 +10,27 @@ public class Order {
     @JsonProperty("id")
     private String idPedido; 
     @JsonProperty("articles")
-    private List<Article> articlulos;
+    private List<Article> articles;
     public Order() {
     }
 
-    public Order(String idPedido , List<Article> articlulos) {
+    public Order(String idPedido , List<Article> articles) {
         this.idPedido = idPedido;
-        this.articlulos = articlulos;
+        this.articles = articles;
     }
 
     public String getIdPedido() {
         return idPedido;
     }
 
-    public List<Article> getArticulos() {
-        return articlulos;
+    public List<Article> getArticles() {
+        return articles;
     }
     public void setIdPedido(String idPedido) {
         this.idPedido = idPedido;
     }
-    public void setArticulos(List<Article> articlulos) {
-        this.articlulos = articlulos;
+    public void setArticles(List<Article> articles) {
+        this.articles = articles;
     }
    
     public double getGrossTotal(List<Double> amounts) {
